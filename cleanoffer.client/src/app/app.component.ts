@@ -16,6 +16,7 @@ interface WeatherForecast {
 export class AppComponent implements OnInit {
   public forecasts: WeatherForecast[] = [];
 
+  
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
@@ -32,6 +33,8 @@ export class AppComponent implements OnInit {
       }
     );
   }
+
+  
 
   title = 'cleanoffer.client';
 }

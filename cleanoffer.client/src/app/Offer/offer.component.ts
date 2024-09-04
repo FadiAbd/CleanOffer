@@ -13,19 +13,24 @@ export class OfferComponent {
     windowCleaning: false,
     balconyCleaning: false,
     trashRemoval: false,
-    totalPrice: undefined
+    totalPrice: undefined as number | undefined
   };
 
-  constructor(private http: HttpClient)
-  {
+  constructor(private http: HttpClient) {
 
   }
 
 
 
   calculateOffer() {
+    console.log('Calculating offer with:', this.offer);
     this.http.post('https://localhost:7031/api/offer', this.offer).subscribe((result: any) => {
+      console.log('Received result:', result);
       this.offer.totalPrice = result.totalPrice;
-    });
+    },
+      (error) => {
+        console.error('Error calculating offer:', error);
+      }
+    );
   }
 }

@@ -2,16 +2,18 @@
   <h2>Beräkna ditt Offert</h2>
   <form (ngSubmit)="calculateOffer()">
     <div>
-      <label for="city">Stad:</label>
+      <label for="city">Välj Din Stad:</label>
       <select id="city" [(ngModel)]="offer.city" name="city">
         <option value="Stockholm">Stockholm</option>
         <option value="Uppsala">Uppsala</option>
       </select>
     </div>
     <div>
-      <label for="squareMeters">Kvadratmeter:</label>
+
+      <label for="squareMeters">Yta(Kvm):</label>
       <input type="number" id="squareMeters" [(ngModel)]="offer.squareMeters" name="squareMeters" />
     </div>
+    <h2>Tillvall tjänster</h2>
     <div>
       <label for="windowCleaning">Fönsterputs:</label>
       <input type="checkbox" id="windowCleaning" [(ngModel)]="offer.windowCleaning" name="windowCleaning" />
@@ -27,7 +29,7 @@
     <button type="submit">Beräkna</button>
   </form>
 
-  <div *ngIf="offer.totalPrice !== undefined">
+  <!--<div *ngIf="offer.totalPrice !== undefined">
     <h3>Offert</h3>
     <p>Stad: {{ offer.city }}</p>
     <p>Kvadratmeter: {{ offer.squareMeters }}</p>
@@ -35,5 +37,15 @@
     <p>Balkongstädning: {{ offer.balconyCleaning ? 'Ja' : 'Nej' }}</p>
     <p *ngIf="offer.city === 'Uppsala'">Bortforsling av skräp: {{ offer.trashRemoval ? 'Ja' : 'Nej' }}</p>
     <h4>Totalpris: {{ offer.totalPrice }} kr</h4>
+  </div>-->
+  <div *ngIf="offer.totalPrice !== undefined" style="border: 1px solid #ccc; padding: 20px; border-radius: 8px; background-color: #f9f9f9; max-width: 400px; margin: 20px auto; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <h3 style="color: #333; font-size: 24px; margin-bottom: 10px;">Din Offert</h3>
+    <p style="color: #555; font-size: 16px; margin: 5px 0;">Stad: {{ offer.city }}</p>
+    <p style="color: #555; font-size: 16px; margin: 5px 0;">Kvadratmeter: {{ offer.squareMeters }}</p>
+    <p style="color: #555; font-size: 16px; margin: 5px 0;">Fönsterputs: {{ offer.windowCleaning ? 'Ja' : 'Nej' }}</p>
+    <p style="color: #555; font-size: 16px; margin: 5px 0;">Balkongstädning: {{ offer.balconyCleaning ? 'Ja' : 'Nej' }}</p>
+    <p *ngIf="offer.city === 'Uppsala'" style="color: #555; font-size: 16px; margin: 5px 0;">Bortforsling av skräp: {{ offer.trashRemoval ? 'Ja' : 'Nej' }}</p>
+    <h4 style="color: #d9534f; font-size: 20px; margin-top: 20px;">Totalpris: {{ offer.totalPrice }} kr</h4>
   </div>
+
 </div>
